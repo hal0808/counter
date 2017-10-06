@@ -1,0 +1,26 @@
+/**/
+*{
+    background-color: #000;
+}
+
+body{
+    margin: 0;
+}
+#show_count{
+    width: 235px;
+    margin: 200px auto 5px auto;
+}
+button{
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    border-style: none;
+}
+#button_main{
+    width: 260px;
+    margin: 10px auto;
+}
+#button_r{
+    width: 65px;
+    margin: 0 auto;
+}

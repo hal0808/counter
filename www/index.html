@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <script src="components/loader.js"></script>
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        $(function(){
+            var counter = 0;  //カウンタ
+            $("#count_up_button").on('touchend',function(){
+                if(counter <= 99){
+                    counter++;
+                }
+                console.log("up : "+counter);
+                show_display(counter);
+            });
+            $("#count_down_button").on('touchend',function(){
+                if(counter >= 1){
+                    counter--;                    
+                }
+                console.log("down : "+counter);
+                show_display(counter);
+            });
+            $("#count_reset_button").on('touchend',function(){
+                counter=0;
+                console.log("reset : "+counter);
+                show_display(counter);
+            });
+            
+            //counter画面を更新するメソッド
+            function show_display(counter){
+                //console.log("show:"+counter);
+                var more = counter;
+                var col4 = 0;col3 = 0,col2 = 0,col1 = 0;
+                
+                col4 = more/1000|0;
+                //console.log("col4:"+col4+"more:"+more);
+                more = more%1000
+                col3 = more/100|0;
+                //console.log("col3:"+col3+"more:"+more);
+                more = more%100;
+                col2 = more/10|0;
+                //console.log("col2:"+col2+"more:"+more);
+                col1 = more%10;
+                //console.log("col1:"+col1+"more:"+more);
+                
+                console.log(counter+" → "+col4+col3+col2+col1);
+                
+                var html_img = 
+                     "<img src='img/no_0"+col4+".png' width='55'>"
+                    +"<img src='img/no_0"+col3+".png' width='55'>"
+                    +"<img src='img/no_0"+col2+".png' width='55'>"
+                    +"<img src='img/no_0"+col1+".png' width='55'>";
+                    console.log(html_img);
+                
+                $("#show_count").html(html_img);
+                
+            }
+        });
+    </script>
+</head>
+<body>
+    
+    <div id="show_count">
+        <img src="img/no_00.png" width="55"><img src="img/no_00.png" width="55"><img src="img/no_00.png" width="55"><img src="img/no_00.png" width="55">
+    </div>
+    <div id="button_r">
+        <button id="count_reset_button"><img src="img/btn_reset_normal.png" width="64" ></button>
+    </div>
+    <div id="button_main">
+        <button id="count_up_button"><img src="img/btn_count_up.gif" width="127"></button>
+        <button id="count_down_button"><img src="img/btn_count_down.gif" width="127"></button>        
+    </div>
+</body>
+</html>
