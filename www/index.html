@@ -11,7 +11,7 @@
         $(function(){
             var counter = 0;  //カウンタ
             $("#count_up_button").on('touchend',function(){
-                if(counter <= 99){
+                if(counter < 9999){
                     counter++;
                 }
                 console.log("up : "+counter);
